@@ -88,7 +88,7 @@ runcmd:
 Above is the cloud-config.yaml file, where we have specified our user for the EC2 instance and the key to connect to the EC2. Then we also specified that we want nginx and nmap installed once the EC2 is created, and lastly, we specified that we want nginx enabled and started once installed.
 
 ## Main.tf Configuration
-Before we use Terraform, we want to edit the `main.tf` file. This file contains all of the configuration for the infrustructure we plan on making. Here we can specify the provider (aws), what ami we want to use (debian), creating VPCs, creating EC2s, allowing SSH, and much, much more. All the documentation can be found here: [Terraform Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+Before we use Terraform, we want to edit the `main.tf` file. This file contains all of the configuration for the infrustructure we plan on making. Here we can specify the provider (aws), what ami we want to use (debian), creating VPCs, creating EC2s, allowing SSH, and much, much more. All the documentation can be found here: [Terraform Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs){:target="_blank"}
 
 Here is a small example of what the main.tf file may look like:
 ```hcl
