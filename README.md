@@ -49,4 +49,42 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashi
 sudo apt update && sudo apt install terraform
 ```
 
-Now Terraform is installed and ready to be used
+Now Terraform is installed and ready to be used.
+
+## Cloud-Init Config
+Here we are going to setup some basic configuration for our EC2 instance that we will be setting up later with Terraform. But before we start working on on the cloud-config.yaml file, we need a ssh key that we will use later to connect to the EC2 instance that Terraform will make.
+
+This can be done with the ssh-keygen command:
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+Now that we have the key pairs, we can start working on our cloud-config.yaml file. Here we can specify the users, different packages we want installed, and even commands we want run when the EC2 is set up.
+
+```yaml
+#cloud-config
+users:
+  - name: web
+    primary_group: web
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - <your public key here>
+
+package_update: true
+package_upgrade: true
+packages:
+  - <packages you want installed here>
+  - nginx
+  - nmap
+
+runcmd: 
+  - <commands you want to run here>
+  - systemctl enable nginx
+  - systemctl start nginx
+```
+
+Above is the cloud-config.yaml file, where we have specified our user for the EC2 instance and the key to connect to the EC2. Then we also specified that we want nginx and nmap installed once the EC2 is created, and lastly, we specified that we want nginx enabled and started once installed.
+
+## Main.tf Configuration
