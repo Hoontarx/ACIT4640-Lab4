@@ -136,7 +136,7 @@ resource "aws_vpc_security_group_ingress_rule" "web-http" {
   cidr_ipv4   = "0.0.0.0/0" # allow from anywhere
   from_port   = 80
   to_port     = 80
-  ip_protocol = "tcp
+  ip_protocol = "tcp"
 }
 
 # allow all out
