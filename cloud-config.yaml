@@ -1,0 +1,19 @@
+#cloud-config
+users:
+  - name: web
+    primary_group: web
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa AAAAC3NzaC1lZDI1NTE5AAAAIASFH20uK4jNOOhVL6ROPCVuxRexD6nk69wV6ZX24BlJ your_email@example.com
+
+package_update: true
+package_upgrade: true
+packages:
+  - nginx
+  - nmap
+
+runcmd:
+  - systemctl enable nginx
+  - systemctl start nginx
