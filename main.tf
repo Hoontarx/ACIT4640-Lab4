@@ -52,7 +52,7 @@ resource "aws_subnet" "web" {
   vpc_id                  = aws_vpc.web.id
   cidr_block              = "10.0.1.0/24"
 	# set availability zone
-	availability_zone = "us-west-2"
+	availability_zone = "us-west-2b"
 	# add public ip on launch
 	map_public_ip_on_launch = true
 
