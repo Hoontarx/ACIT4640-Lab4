@@ -114,3 +114,34 @@ resource "aws_vpc" "example" {
 Once the main.tf file is set up, we can verify it with `terraform validate`. This will tell us if there is any errors with our syntax or other warnings if there are other issues.
 
 ## Using Terraform
+
+### Initialize
+First, we initialize Terraform so it can download the necessary providers and set up the working directory:
+```bash
+terraform init
+```
+
+### Format
+To make sure everything is neat and consistent, we can run:
+
+```bash
+terraform fmt
+```
+
+### Plan
+Before applying, we can see what Terraform will do by running:
+```bash
+terraform plan
+```
+
+### Apply
+Once we are ready, we can apply the configuration and build the resources:
+```bash
+terraform apply
+```
+
+### Destroy
+Finally, if we want to remove everything that Terraform created, we can run:
+```bash
+terraform destroy
+```
